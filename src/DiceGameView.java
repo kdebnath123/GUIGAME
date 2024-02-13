@@ -14,11 +14,17 @@ public class DiceGameView extends JFrame {
     private DiceGame d;
     private Box[] boxes;
 
+    private Die dice1;
+    private Die dice2;
+
 
     public DiceGameView(DiceGame d){
 
         this.d = d;
         boxes = d.getBoxes();
+
+        dice1 = new Die();
+
 
         background = new ImageIcon("Resources/background.png").getImage();
 
@@ -30,15 +36,19 @@ public class DiceGameView extends JFrame {
 
     public void paint(Graphics g){
 
+
         g.drawImage(background, 0, 0, this);
 
-        for(int i = 0; i < 9; i++){
-            boxes[i].draw(g, this);
-        }
+        dice1.draw(g, this);
+
+
 
         for (Box b: boxes) {
             b.draw(g, this);
         }
+
+
+
 
 
     }
