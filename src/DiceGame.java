@@ -5,14 +5,15 @@ public class DiceGame {
 
     //Instance variables    
     private Scanner input;
+    public static final int BOX_NUMBER = 9;
     private int sum;
     private Box[] boxes;
     private int roundNumber;
     private int close;
 
+    private Die diceOne, diceTwo;
+
     private DiceGameView window;
-
-
 
 
     //Main function
@@ -30,9 +31,13 @@ public class DiceGame {
         this.roundNumber = 0;
         this.sum = 0;
 
-        boxes = new Box[9];
+        diceOne = new Die();
+        diceTwo = new Die();
 
-        for (int i = 0; i < 9; i++){
+
+        boxes = new Box[BOX_NUMBER];
+
+        for (int i = 0; i < BOX_NUMBER; i++){
             boxes[i] = new Box(i + 1);
         }
 
@@ -50,10 +55,6 @@ public class DiceGame {
         window.repaint();
 
 
-        Die one = new Die();
-        Die two = new Die();
-        int rollOne;
-        int rollTwo;
 
         //print instructions
         printInsructions();
@@ -62,15 +63,13 @@ public class DiceGame {
         while(true) {
 
             //Roll dice and sum them
-            rollOne = one.roll();
-            rollTwo = two.roll();
-            sum = rollOne + rollTwo;
+            sum = diceOne.roll() + diceTwo.roll();;
 
             //Check win/loss
             checkWinLoss();
 
             //Inform
-            System.out.println("You rolled a " + rollOne + " and a " + rollTwo
+            System.out.println("You rolled a " + diceOne.getCurrentRoll() + " and a " + diceTwo.getCurrentRoll()
                     + " for a sum of " + sum);
             printOpenBoxes();
 
@@ -139,11 +138,13 @@ public class DiceGame {
 
         //Valid check
         if (close > sum || !(boxes[close - 1].isOpen())) {
+
             return -1;
         }
         else {
             boxes[close - 1].close();
             sum -= close;
+
             return sum;
         }
 
@@ -151,18 +152,20 @@ public class DiceGame {
 
     public void checkWinLoss() {
 
+
         int score = 0;
         boolean hasLossed = true;
 
         // Check if any box can be closed
         for (int i = 0; i < 9; i++) {
 
-            //sum open boxes
-            score += boxes[i].getNumber();
+            if(boxes[i].isOpen()){
+                score += boxes[i].getNumber();
+            }
 
             //If any open box is smaller than sum, it can be closed
             //Thus player countinues to play
-            if (boxes[i].getNumber() != 0 && boxes[i].getNumber() <= sum) {
+            if (boxes[i].isOpen() && boxes[i].getNumber() <= sum) {
                 return;
             }
 

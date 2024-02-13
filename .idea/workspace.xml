@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2100220d-cd84-4ed5-8d4b-99bb35419125" name="Changes" comment="Files for GUI Game" />
+    <list default="true" id="2100220d-cd84-4ed5-8d4b-99bb35419125" name="Changes" comment="Files for GUI Game">
+      <change afterPath="$PROJECT_DIR$/Resources/dice/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/dice/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/dice/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/dice/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/dice/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/dice/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiceGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiceGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiceGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiceGameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Die.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,18 +37,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/dice" />
       <recent name="$PROJECT_DIR$/Resources/boxes" />
       <recent name="$PROJECT_DIR$/Rescources" />
     </key>
@@ -79,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1707540291023</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Files for GUI Game">
+      <created>1707540313825</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707540313825</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Files for GUI Game">
+      <created>1707540381633</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707540381633</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
