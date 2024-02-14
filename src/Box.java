@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class Box {
 
-    public final int BOX_HEIGHT = 150;
-    public final int BOX_WIDTH = 100;
+    public static final int BOX_HEIGHT = 150;
+    public static final int BOX_WIDTH = 100;
 
     private int number;
     private boolean isOpen;

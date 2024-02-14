@@ -4,9 +4,8 @@ import java.awt.*;
 public class DiceGameView extends JFrame {
 
     public static final int HEIGHT = 800, WIDTH = 1000,
-            BOX_SIZE = 100,
-            X_OFFSET = 50,
-            Y_OFFSET = 75;
+                            X_OFFSET = 50, Y_OFFSET = 75;
+
     public static final String TITLE = "SHUT THE BOX";
 
     private Image background;
@@ -40,6 +39,8 @@ public class DiceGameView extends JFrame {
         g.drawImage(background, 0, 0, this);
 
         dice1.draw(g, this);
+        dice1.draw(g, this);
+
 
 
 

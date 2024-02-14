@@ -71,7 +71,7 @@ public class DiceGame {
             //Inform
             System.out.println("You rolled a " + diceOne.getCurrentRoll() + " and a " + diceTwo.getCurrentRoll()
                     + " for a sum of " + sum);
-            printOpenBoxes();
+            window.repaint();
 
             //Controls Gameplay for each dice roll
             //Countinue to reprompt and close boxes until Nonpossible
@@ -81,7 +81,7 @@ public class DiceGame {
                 System.out.print("\033[H\033[2J");
 
                 //Print board and inform
-                printOpenBoxes();
+                window.repaint();
                 System.out.println("Your remaining sum is " + sum);
 
                 //Check win/loss
@@ -105,10 +105,6 @@ public class DiceGame {
 
     }
 
-    //Print the open boxes
-    public void printOpenBoxes() {
-        window.repaint();
-    }
 
     //Prompts for next int
     //If input is valid then close it

@@ -4,8 +4,17 @@ import java.awt.*;
 public class Die {
     /** Instance Variables **/
 
+    public static final int DICE_SIZE = 50, EXTRA_OFFSET = 25,
+            ROLL_X_START = DiceGameView.X_OFFSET + EXTRA_OFFSET,
+            ROLL_X_SIZE = DiceGameView.WIDTH - ROLL_X_START - DICE_SIZE - EXTRA_OFFSET - DiceGameView.X_OFFSET,
+            ROLL_Y_START = DiceGameView.Y_OFFSET + 2 * Box.BOX_HEIGHT + EXTRA_OFFSET,
+            ROLL_Y_SIZE = DiceGameView.HEIGHT - ROLL_Y_START - DICE_SIZE - EXTRA_OFFSET - DiceGameView.Y_OFFSET;
+
     public static final int NUM_SIDES = 6;
-    public static final int DICE_SIZE = 50;
+
+
+    private int Xcorner;
+    private int Ycorner;
     private Image[] diceImage;
 
     private int currentRoll;
@@ -16,7 +25,7 @@ public class Die {
     public Die() {
         diceImage = new Image[NUM_SIDES];
 
-        currentRoll = -1;
+        currentRoll = NUM_SIDES;
 
         for(int i = 0; i < NUM_SIDES; i++){
             diceImage[i] = new ImageIcon("Resources/dice/" + (i + 1) +".png").getImage();
@@ -27,11 +36,21 @@ public class Die {
 
     public  void draw(Graphics g, DiceGameView d){
 
-        for (int i = 0; i< NUM_SIDES; i++){
-            g.drawImage(diceImage[i], 400 + DICE_SIZE*i, 400 + DICE_SIZE*i, d);
-        }
+        Xcorner = (int)(Math.random() * (ROLL_X_SIZE) + ROLL_X_START);
+        Ycorner = (int)(Math.random() * (ROLL_Y_SIZE) + ROLL_Y_START);
 
+        g.drawImage(diceImage[currentRoll - 1], Xcorner, Ycorner, d);
     }
+
+    //public static void NoOvelap(Die one, Die two, Graphics g, DiceGameView d){
+
+
+
+
+
+    //}
+
+
 
     /** Methods **/
 
@@ -48,28 +67,13 @@ public class Die {
         return currentRoll;
     }
 
-    /**
-     * Rolls the dice the numRolls times
-     * and returns the max value of the rolls
-     */
-    public int getMaxRoll(int numRolls) {
 
-        int rollMax = 0;
-
-        for (int i = 0; i < numRolls; i++) {
-
-            rollMax = Math.max(this.roll(), rollMax);
-
-        }
-
-        return rollMax;
-
-    }
 
     /**
      * Returns a String in the following form:
      * "This is an n-sided die."
      */
+    @Override
     public String toString() {
         return "This is a " + NUM_SIDES + "-sided die";
     }
