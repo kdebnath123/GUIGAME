@@ -3,185 +3,181 @@ import java.util.Scanner;
 
 public class DiceGame {
 
-    //Instance variables    
     private Scanner input;
     public static final int BOX_NUMBER = 9;
+
+    /** Game data **/
     private int sum;
+    private int score;
+
+    /** Objects **/
     private Box[] boxes;
-    private int roundNumber;
-    private int close;
-
     private Die diceOne, diceTwo;
-
     private DiceGameView window;
 
+    /** Tracks game progression **/
+    private boolean isFirstTime, hasWon, hasLost;
 
-    //Main function
-    public static void main(String[] args){
+
+    /** Main function **/
+    public static void main(String[] args) {
 
         DiceGame game = new DiceGame();
         game.playGame();
 
     }
 
-    //Constructor
+    /** Constructor **/
     public DiceGame() {
 
+        // Creates Scanner
         this.input = new Scanner(System.in);
-        this.roundNumber = 0;
-        this.sum = 0;
 
+        this.sum = 0;
+        // Initial score is sum of numbers 1 to 9
+        this.score = 45;
+
+        // Initial game status
+        this.isFirstTime = true;
+        this.hasWon = false;
+        this.hasLost = false;
+
+        // Create two six sided dice
         diceOne = new Die();
         diceTwo = new Die();
 
-
+        // Creates an array that holds 9 boxes
         boxes = new Box[BOX_NUMBER];
 
         for (int i = 0; i < BOX_NUMBER; i++){
             boxes[i] = new Box(i + 1);
         }
 
+        // Creates the viewer's window
         this.window = new DiceGameView(this);
-
     }
 
-    public Box[] getBoxes(){
-        return boxes;
-    }
-
-    //Controls overview of game rounds
+    /** Controls overview of game round **/
     public void playGame() {
 
-        window.repaint();
+        // Waits for user to read and confirm instructions
+        System.out.print("Enter to start: ");
+        input.nextLine();
+        isFirstTime = false;
 
+        //Loops until game is over
+        while(!hasWon && !hasLost) {
 
+            window.repaint();
 
-        //print instructions
-        printInsructions();
-
-        //Loops forever, controls each round of game
-        while(true) {
-
-            //Roll dice and sum them
-            sum = diceOne.roll() + diceTwo.roll();;
+            // Roll dice and sum them
+            sum = diceOne.roll() + diceTwo.roll(diceOne.getXcorner(), diceOne.getYcorner());
 
             //Check win/loss
             checkWinLoss();
 
-            //Inform
-            System.out.println("You rolled a " + diceOne.getCurrentRoll() + " and a " + diceTwo.getCurrentRoll()
-                    + " for a sum of " + sum);
-            window.repaint();
-
             //Controls Gameplay for each dice roll
-            //Countinue to reprompt and close boxes until Nonpossible
+            //Continue to re-prompt and close boxes until Non-possible
             while (closeBox() != 0) {
-
-                //Clear the screen -- from javapoint
-                System.out.print("\033[H\033[2J");
-
-                //Print board and inform
-                window.repaint();
-                System.out.println("Your remaining sum is " + sum);
 
                 //Check win/loss
                 checkWinLoss();
 
+                // Update screen
+                window.repaint();
             }
-
         }
-
     }
 
-
-    //Print games instructions
-    public void printInsructions(){
-
-        System.out.println("Welcome to close the box.");
-        System.out.println("Each turn roll 2 dice, and sum the numbers.");
-        System.out.println("Then 'shut' the numbers" +
-                "until it adds up the same sum.");
-        System.out.println("Try to get the lowest score.\n");
-
-    }
-
-
-    //Prompts for next int
-    //If input is valid then close it
+    /** Reprompts until valid number is inputed, then closes the corresponding box **/
     public int closeBox() {
 
-        //Prompt
         int close;
 
-        // Gets only valid int inputs;
+        // Forces user to input a number between 1 and 9
         while (true) {
-            try
-            {
+            // Try/Catch learned from Stack Overflow
+            try {
                 System.out.print("Close box: ");
                 close = input.nextInt();
 
-                if (close > 0 && close <= 9){
+                if (close > 0 && close <= 9) {
                     input.nextLine();
                     break;
                 }
             }
-            catch (InputMismatchException e)
-            {
+            catch (InputMismatchException e) {
                 input.next();
             }
         }
 
-
-        //Valid check
+        // Returns -1 if box cannot be close
         if (close > sum || !(boxes[close - 1].isOpen())) {
-
-            return -1;
+            return - 1;
         }
+        // Closes box, updates score, and returns the remaining sum if box can be closed
         else {
             boxes[close - 1].close();
             sum -= close;
-
+            score -= close;
             return sum;
         }
-
     }
 
+    /**
+     * Checks if the game has been won/lossed or in progress
+     * Then updates accordingly
+     **/
     public void checkWinLoss() {
 
+        // Checks if user has won
+        if(score == 0) {
+            hasWon = true;
+            return;
+        }
 
-        int score = 0;
-        boolean hasLossed = true;
-
-        // Check if any box can be closed
+        // Checks if any box can be closed
         for (int i = 0; i < 9; i++) {
-
-            if(boxes[i].isOpen()){
-                score += boxes[i].getNumber();
-            }
-
-            //If any open box is smaller than sum, it can be closed
-            //Thus player countinues to play
             if (boxes[i].isOpen() && boxes[i].getNumber() <= sum) {
                 return;
             }
 
         }
 
-        //If sum is zero, all boxes are closed, so they won
-        //Win screen
-        if (score == 0){
+        // If user has not won, but can't close any boxes they must have lost.
+        hasLost = true;
+    }
 
-            System.out.print("\033[H\033[2J");
-            System.out.println("YOU CLEARED THE BOARD GOOD JOB!");
-            System.out.println("YOU WON!!!!");
+    /******************** Getters ********************/
+    public Die getDiceOne() {
+        return diceOne;
+    }
 
-        }
+    public Die getDiceTwo() {
+        return diceTwo;
+    }
 
-        //If they cant close any box and didn't win, they lost
-        //Loss screen
-        System.out.print("\033[H\033[2J");
-        System.out.println("No More Possible moves :(");
-        System.out.println("Good job your score was " + score);
+    public boolean isFirstTime() {
+        return isFirstTime;
+    }
 
+    public boolean hasLossed() {
+        return hasLost;
+    }
+
+    public boolean hasWon() {
+        return hasWon;
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public Box[] getBoxes() {
+        return boxes;
     }
 }
