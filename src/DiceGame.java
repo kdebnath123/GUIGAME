@@ -68,20 +68,26 @@ public class DiceGame {
         //Loops until game is over
         while(!hasWon && !hasLost) {
 
-            window.repaint();
-
             // Roll dice and sum them
             sum = diceOne.roll() + diceTwo.roll(diceOne.getXcorner(), diceOne.getYcorner());
 
-            //Check win/loss
-            checkWinLoss();
+            window.repaint();
+
+            //Check win/loss exit if it is
+            if(GameIsOver()){
+                window.repaint();
+                break;
+            }
 
             //Controls Gameplay for each dice roll
             //Continue to re-prompt and close boxes until Non-possible
             while (closeBox() != 0) {
 
-                //Check win/loss
-                checkWinLoss();
+                //Check win/loss exit if it is
+                if(GameIsOver()){
+                    window.repaint();
+                    break;
+                }
 
                 // Update screen
                 window.repaint();
@@ -125,27 +131,29 @@ public class DiceGame {
     }
 
     /**
-     * Checks if the game has been won/lossed or in progress
+     * Checks if the game has been won/lost or in progress
      * Then updates accordingly
+     * Returns true if game is won or lost
+     * Returns false if game is in progress
      **/
-    public void checkWinLoss() {
+    public boolean GameIsOver() {
 
         // Checks if user has won
         if(score == 0) {
             hasWon = true;
-            return;
+            return true;
         }
 
         // Checks if any box can be closed
         for (int i = 0; i < 9; i++) {
             if (boxes[i].isOpen() && boxes[i].getNumber() <= sum) {
-                return;
+                return false;
             }
-
         }
 
         // If user has not won, but can't close any boxes they must have lost.
         hasLost = true;
+        return true;
     }
 
     /******************** Getters ********************/
@@ -161,7 +169,7 @@ public class DiceGame {
         return isFirstTime;
     }
 
-    public boolean hasLossed() {
+    public boolean hasLost() {
         return hasLost;
     }
 

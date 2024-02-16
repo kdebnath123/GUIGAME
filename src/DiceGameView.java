@@ -71,7 +71,7 @@ public class DiceGameView extends JFrame {
             g.drawString("YOU CLEARED THE BOARD GOOD JOB!", X_OFFSET, Y_OFFSET);
             g.drawString("YOU WON!!!!", X_OFFSET, Y_OFFSET + LINE_HEIGHT);
         }
-        if(d.hasLossed()) {
+        if(d.hasLost()) {
             g.drawString("No More Possible moves :(", (int)(WIDTH / 3.0), HEIGHT - Y_OFFSET + LINE_HEIGHT);
             g.drawString("FINAL ", WIDTH - 4*(X_OFFSET - 1), HEIGHT - Y_OFFSET + LINE_HEIGHT);
         }

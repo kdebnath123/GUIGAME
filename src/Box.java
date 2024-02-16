@@ -36,10 +36,10 @@ public class Box {
     /** Draws box in opened or closed state **/
     public  void draw(Graphics g, DiceGameView d) {
 
-        if(isOpen){
+        if(isOpen) {
             g.drawImage(openImage, Xcorner, Ycorner, d);
         }
-        else{
+        else {
             g.drawImage(closedImage, Xcorner, Ycorner + BOX_HEIGHT, d);
         }
     }
@@ -51,7 +51,6 @@ public class Box {
     public boolean isOpen() {
         return isOpen;
     }
-
 
     /** Setter **/
     public void close() {
