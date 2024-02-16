@@ -66,28 +66,21 @@ public class DiceGame {
         isFirstTime = false;
 
         //Loops until game is over
-        while(!hasWon && !hasLost) {
+        while(true) {
 
             // Roll dice and sum them
             sum = diceOne.roll() + diceTwo.roll(diceOne.getXcorner(), diceOne.getYcorner());
 
-            window.repaint();
-
             //Check win/loss exit if it is
             if(GameIsOver()){
-                window.repaint();
                 break;
             }
 
+            window.repaint();
+
             //Controls Gameplay for each dice roll
             //Continue to re-prompt and close boxes until Non-possible
-            while (closeBox() != 0) {
-
-                //Check win/loss exit if it is
-                if(GameIsOver()){
-                    window.repaint();
-                    break;
-                }
+            while(!GameIsOver() && closeBox() != 0 ) {
 
                 // Update screen
                 window.repaint();
@@ -141,6 +134,7 @@ public class DiceGame {
         // Checks if user has won
         if(score == 0) {
             hasWon = true;
+            window.repaint();
             return true;
         }
 
@@ -153,6 +147,7 @@ public class DiceGame {
 
         // If user has not won, but can't close any boxes they must have lost.
         hasLost = true;
+        window.repaint();
         return true;
     }
 

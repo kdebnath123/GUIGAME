@@ -57,9 +57,8 @@ public class DiceGameView extends JFrame {
         diceOne.draw(g, this);
         diceTwo.draw(g, this);
 
-        // Inform user of sum and score
-        g.drawString("SUM: "+ d.getSum(), X_OFFSET, HEIGHT - Y_OFFSET + LINE_HEIGHT);
-        g.drawString("SCORE: "+ d.getScore(), WIDTH - 3*X_OFFSET, HEIGHT - Y_OFFSET + LINE_HEIGHT);
+        // Informs score
+
 
         // Draw each box
         for (Box b: boxes) {
@@ -70,10 +69,19 @@ public class DiceGameView extends JFrame {
         if(d.hasWon()) {
             g.drawString("YOU CLEARED THE BOARD GOOD JOB!", X_OFFSET, Y_OFFSET);
             g.drawString("YOU WON!!!!", X_OFFSET, Y_OFFSET + LINE_HEIGHT);
+            return;
         }
         if(d.hasLost()) {
             g.drawString("No More Possible moves :(", (int)(WIDTH / 3.0), HEIGHT - Y_OFFSET + LINE_HEIGHT);
-            g.drawString("FINAL ", WIDTH - 4*(X_OFFSET - 1), HEIGHT - Y_OFFSET + LINE_HEIGHT);
+            g.drawString("FINAL SCORE: " + d.getScore(), WIDTH - 4*(X_OFFSET), HEIGHT - Y_OFFSET + LINE_HEIGHT);
+            return;
         }
+
+        // Only displays if sum/score game is in progress
+        g.drawString("SUM: "+ d.getSum(), X_OFFSET, HEIGHT - Y_OFFSET + LINE_HEIGHT);
+        g.drawString("SCORE: "+ d.getScore(), WIDTH - 3*X_OFFSET, HEIGHT - Y_OFFSET + LINE_HEIGHT);
+
+
+
     }
 }
