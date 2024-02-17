@@ -80,7 +80,7 @@ public class DiceGame {
 
             //Controls Gameplay for each dice roll
             //Continue to re-prompt and close boxes until Non-possible
-            while(!GameIsOver() && closeBox() != 0 ) {
+            while(!GameIsOver() && closeBox() != 0) {
 
                 // Update screen
                 window.repaint();

@@ -78,8 +78,6 @@ public class Die {
         // Generates random number from 1 to NUM_SIDES to get new dice face
         currentRoll = (int)((Math.random() * (NUM_SIDES)) + 1);
         return currentRoll;
-
-
     }
 
     /******************** Getters ********************/

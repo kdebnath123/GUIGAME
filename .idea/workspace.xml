@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2100220d-cd84-4ed5-8d4b-99bb35419125" name="Changes" comment="worked on dice">
+    <list default="true" id="2100220d-cd84-4ed5-8d4b-99bb35419125" name="Changes" comment="finished game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DiceGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiceGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DiceGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiceGameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Die.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708117847216</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="finished game">
+      <created>1708119311821</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708119311821</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,17 +185,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Files for GUI Game" />
     <MESSAGE value="worked on dice" />
-    <option name="LAST_COMMIT_MESSAGE" value="worked on dice" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DiceGame.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="finished game" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished game" />
   </component>
 </project>

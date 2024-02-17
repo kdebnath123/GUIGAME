@@ -57,9 +57,6 @@ public class DiceGameView extends JFrame {
         diceOne.draw(g, this);
         diceTwo.draw(g, this);
 
-        // Informs score
-
-
         // Draw each box
         for (Box b: boxes) {
             b.draw(g, this);
@@ -80,8 +77,6 @@ public class DiceGameView extends JFrame {
         // Only displays if sum/score game is in progress
         g.drawString("SUM: "+ d.getSum(), X_OFFSET, HEIGHT - Y_OFFSET + LINE_HEIGHT);
         g.drawString("SCORE: "+ d.getScore(), WIDTH - 3*X_OFFSET, HEIGHT - Y_OFFSET + LINE_HEIGHT);
-
-
 
     }
 }
